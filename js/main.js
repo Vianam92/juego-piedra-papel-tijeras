@@ -8,6 +8,7 @@ const textGoElement = document.querySelector('.js-start');
 const textPlayerElement = document.querySelector('.js_cont_player');
 const textComputerElement = document.querySelector('.js_cont_computer');
 const userValue = selectOptionElements.value;
+const resetElement = document.querySelector('.js-reset')
 let countUser = 0;
 let countComputer = 0;
 //function 
@@ -32,6 +33,10 @@ function getGanador(){
     textComputerElement.innerHTML = `ordenador: ${countComputer++}`;
     console.log(`El computador saco ${valueGetRandom}`);
     }
+    if(countUser === 10 || countComputer === 10){
+        countUser = 0;
+        countComputer=0
+    }
 }
 
 function handlerClickUpdate(event){
@@ -42,3 +47,4 @@ function handlerClickUpdate(event){
 
 //listener
 inputBtnElement.addEventListener('click',handlerClickUpdate);
+
