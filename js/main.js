@@ -17,6 +17,12 @@ let countComputer = 0;
 function getRandomNumber(max) {
 return Math.ceil(Math.random() * max);
 }
+function pararCount(){
+    if(countUser === 11 || countComputer === 11){
+        inputBtnElement.classList.add('hidden');
+        resetElement.classList.remove('hidden'); 
+    }
+}
 
 function getGanador(){
     const valueGetRandom = getRandomNumber(10);
@@ -33,18 +39,21 @@ function getGanador(){
     textComputerElement.innerHTML = `ordenador: ${countComputer++}`;
     console.log(`El computador saco ${valueGetRandom}`);
     }
-    if(countUser === 10 || countComputer === 10){
-        countUser = 0;
-        countComputer=0
-    }
+    pararCount();
 }
 
 function handlerClickUpdate(event){
     event.preventDefault();
     getGanador();
-    //countGanadores()
+}
+function handlerButonReset(event) {
+    event.preventDefault();
+    inputBtnElement.classList.remove('hidden');
+        resetElement.classList.add('hidden'); 
+        countUser = 0;
+        countComputer = 0;
 }
 
 //listener
 inputBtnElement.addEventListener('click',handlerClickUpdate);
-
+resetElement.addEventListener('click', handlerButonReset);
