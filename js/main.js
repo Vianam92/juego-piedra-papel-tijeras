@@ -8,7 +8,8 @@ const textGoElement = document.querySelector('.js-start');
 const textPlayerElement = document.querySelector('.js_cont_player');
 const textComputerElement = document.querySelector('.js_cont_computer');
 const userValue = selectOptionElements.value;
-
+let countUser = 0;
+let countComputer = 0;
 //function 
 
 //he generado el ramdom
@@ -17,25 +18,18 @@ return Math.ceil(Math.random() * max);
 }
 
 function getGanador(){
-    const valueGetRandom = getRandomNumber(20);
+    const valueGetRandom = getRandomNumber(30);
     if(userValue === 'piedra' && valueGetRandom < 3 || userValue === 'tijera' && valueGetRandom >= 6 || userValue === 'papel' && valueGetRandom >= 3){
-    textGoElement.innerHTML = "Has empatado";
+    textGoElement.innerHTML = "¡Has empatado!";
     }else if(userValue === 'piedra' && valueGetRandom >= 6 || userValue === 'papel' && valueGetRandom < 3 || userValue === 'tijera' || valueGetRandom >= 6){
-    textGoElement.innerHTML = "Has ganado";
-
+    textGoElement.innerHTML = "¡Has ganado!";
+    textPlayerElement.innerHTML = `jugador: ${countUser++}`;
     }
     else{
-    textGoElement.innerHTML = "Has perdido";
+    textGoElement.innerHTML = "¡Has perdido!";
+    countComputer += parseInt(valueGetRandom);
     }
 }
-
-/*function countGanadores(){
-
-for(let i = 0; i <=10; i++){
-countUser++;
-countComputer++;
-}
-}*/
 
 //textPlayerElement.innerHTML = `Jugador ${}`;
 //textComputerElement.innerHTML = `Computadora ${}`;
