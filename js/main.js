@@ -18,16 +18,19 @@ return Math.ceil(Math.random() * max);
 }
 
 function getGanador(){
-    const valueGetRandom = getRandomNumber(30);
+    const valueGetRandom = getRandomNumber(10);
     if(userValue === 'piedra' && valueGetRandom < 3 || userValue === 'tijera' && valueGetRandom >= 6 || userValue === 'papel' && valueGetRandom >= 3){
     textGoElement.innerHTML = "¡Has empatado!";
+    console.log(`El computador saco ${valueGetRandom}`)
     }else if(userValue === 'piedra' && valueGetRandom >= 6 || userValue === 'papel' && valueGetRandom < 3 || userValue === 'tijera' || valueGetRandom >= 6){
     textGoElement.innerHTML = "¡Has ganado!";
     textPlayerElement.innerHTML = `jugador: ${countUser++}`;
+    console.log(`El computador saco ${valueGetRandom}`)
     }
     else{
     textGoElement.innerHTML = "¡Has perdido!";
-    countComputer += parseInt(valueGetRandom);
+    textComputerElement.innerHTML = `ordenador: ${countComputer++}`;
+    console.log(`El computador saco ${valueGetRandom}`);
     }
 }
 
