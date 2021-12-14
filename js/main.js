@@ -34,9 +34,6 @@ function getGanador(){
     }
 }
 
-//textPlayerElement.innerHTML = `Jugador ${}`;
-//textComputerElement.innerHTML = `Computadora ${}`;
-  
 function handlerClickUpdate(event){
     event.preventDefault();
     getGanador();

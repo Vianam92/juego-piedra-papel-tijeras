@@ -2,6 +2,8 @@
     display:flex;
     flex-direction: column;
     align-items: center;
+    border:3px solid tomato;
+    box-shadow: 3px -4px 2px black;
 }
 .button{
     background-color: violet;
@@ -9,4 +11,11 @@
 .start{
     background-color: violet;
     text-align: center;
+}
+.h1{
+    text-align: center;
+    color:tomato
+}
+.hidden{
+    display:none;
 }
