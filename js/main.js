@@ -9,59 +9,100 @@ const textPlayerElement = document.querySelector(".js_cont_player");
 const textComputerElement = document.querySelector(".js_cont_computer");
 const userValue = selectOptionElements.value;
 const resetElement = document.querySelector(".js-reset");
+
+//variables globales.
 let countUser = 0;
 let countComputer = 0;
-//function
+let count = 0;
 
-//he generado el ramdom
+//function
 function getRandomNumber(max) {
   return Math.ceil(Math.random() * max);
 }
-function pararCount() {
-  if (countUser === 11 || countComputer === 11) {
+
+function getValueComputer() {
+  let randomNumber = getRandomNumber(10);
+  let moveComputer = "";
+  if (randomNumber < 3) {
+    moveComputer = "piedra";
+  } else if (randomNumber >= 6) {
+    moveComputer = "tijera";
+  } else {
+    moveComputer = "papel";
+  }
+  return moveComputer;
+}
+
+function getValueUser() {
+  const valueUser = selectOptionElements.value;
+  return valueUser;
+}
+function getResultComparing() {
+  let moveComputer = getValueComputer();
+  let moveUser = getValueUser();
+  count++;
+  if (moveComputer === moveUser) {
+    textGoElement.innerHTML = "Empate";
+  } else if (moveUser === "piedra") {
+    if (moveComputer === "tijera") {
+      textGoElement.innerHTML = "Has ganado";
+      countUser++;
+    } else if (moveComputer === "papel") {
+      textGoElement.innerHTML = "Has perdido";
+      countComputer++;
+    }
+  } else if (moveUser === "tijera") {
+    if (moveComputer === "papel") {
+      textGoElement.innerHTML = "Has ganado";
+      countUser++;
+    } else if (moveComputer === "piedra") {
+      textGoElement.innerHTML = "Has perdido";
+      countComputer++;
+    }
+  } else if (moveUser === "papel") {
+    if (moveComputer === "piedra") {
+      textGoElement.innerHTML = "Has ganado";
+      countUser++;
+    } else if (moveComputer === "tijera") {
+      textGoElement.innerHTML = "Has perdido";
+      countComputer++;
+    }
+  }
+  textPlayerElement.innerHTML = `usuario : ${countUser}`;
+  textComputerElement.innerHTML = `computadora:${countComputer}`;
+}
+
+function gameOver() {
+  if (count === 10) {
+    if (countUser > countComputer) {
+      textGoElement.innerHTML = "Has ganado humano";
+    } else if (countUser < countComputer) {
+      textGoElement.innerHTML = "Has perdido humano";
+    } else if (countUser === countComputer) {
+      textGoElement.innerHTML = "Hemos quedado empatados";
+    }
     inputBtnElement.classList.add("hidden");
     resetElement.classList.remove("hidden");
   }
 }
-
-function getGanador() {
-  const valueGetRandom = getRandomNumber(10);
-  if (
-    (userValue === "piedra" && valueGetRandom < 3) ||
-    (userValue === "tijera" && valueGetRandom >= 6) ||
-    (userValue === "papel" && valueGetRandom >= 3)
-  ) {
-    textGoElement.innerHTML = "¡Has empatado!";
-    console.log(`El computador saco ${valueGetRandom}`);
-  } else if (
-    (userValue === "piedra" && valueGetRandom >= 6) ||
-    (userValue === "papel" && valueGetRandom < 3) ||
-    userValue === "tijera" ||
-    valueGetRandom >= 6
-  ) {
-    textGoElement.innerHTML = "¡Has ganado!";
-    textPlayerElement.innerHTML = `jugador: ${countUser++}`;
-    console.log(`El computador saco ${valueGetRandom}`);
-  } else {
-    textGoElement.innerHTML = "¡Has perdido!";
-    textComputerElement.innerHTML = `ordenador: ${countComputer++}`;
-    console.log(`El computador saco ${valueGetRandom}`);
-  }
-  pararCount();
-}
-
-function handlerClickUpdate(event) {
-  event.preventDefault();
-  getGanador();
-}
-function handlerButonReset(event) {
-  event.preventDefault();
+function resetGame(eve) {
+  eve.preventDefault();
   inputBtnElement.classList.remove("hidden");
   resetElement.classList.add("hidden");
   countUser = 0;
   countComputer = 0;
+  count = 0;
+  textGoElement.innerHTML = "¡Vamos a jugar!";
+  textPlayerElement.innerHTML = `usuario : ${countUser}`;
+  textComputerElement.innerHTML = `computadora:${countComputer}`;
 }
 
-//listener
+function handlerClickUpdate(eve) {
+  eve.preventDefault();
+  getResultComparing();
+  gameOver();
+}
+
 inputBtnElement.addEventListener("click", handlerClickUpdate);
-resetElement.addEventListener("click", handlerButonReset);
+resetElement.addEventListener("click", resetGame);
+
