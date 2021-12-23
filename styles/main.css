@@ -1,21 +1,110 @@
-.container{
-    display:flex;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(80, 194, 240, 0.603);
+}
+
+main {
+    display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
-    border:3px solid tomato;
-    box-shadow: 3px -4px 2px black;
+    margin-top: 100px;
 }
-.button{
-    background-color: violet;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(124, 238, 228);
+    height: auto;
+    margin: 10px;
+    padding: 5px;
+    box-shadow: 0 0 0 3px rgba(255, 244, 242, 0.39);
 }
-.start{
-    background-color: violet;
+
+.select {
+    margin: 10px;
+    padding: 5px;
+    background-color: rgb(238, 220, 216);
+    border-radius: 25px;
+    border: 2px solid rgb(83, 77, 77);
+    box-shadow: -3px -2px 0 rgba(48, 45, 45, 0.753);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.button {
+    background-color: rgb(238, 220, 216);
+    border: px solid rgb(82, 33, 82);
+    width: 100px;
+    padding: 5px;
+    border-radius: 20px;
+    margin: 1px;
+    box-shadow: -3px -2px 0 rgba(48, 45, 45, 0.753);
+    font-size: 1.2rem;
+    font-weight: 600;
+
+}
+
+.button-reset {
+    background-color: rgb(238, 220, 216);
+    border: px solid rgb(82, 33, 82);
+    width: 100%;
+    padding: 5px;
+    border-radius: 20px;
+    margin: 1px;
+    box-shadow: -3px -2px 0 rgba(48, 45, 45, 0.753);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.start {
+    background-color: rgb(123, 246, 250);
+    text-align: center;
+    border-radius: 20px;
+    padding: 5px;
+    border: 3px solid rgb(240, 216, 240);
+    box-shadow: 1px 2px 3px rgba(252, 232, 229, 0.589);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 15px;
+}
+
+.h1 {
+    text-align: center;
+    margin: 20px;
+}
+
+.text {
+    color: rgb(2, 5, 34);
+    text-align: center;
+    margin: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.div-img {
+    width: 100%;
+    margin-top: 10px;
     text-align: center;
 }
-.h1{
-    text-align: center;
-    color:tomato
+
+.img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid white
 }
-.hidden{
-    display:none;
+
+@media(min-width:768px) {
+    .container {
+        width: 500px;
+    }
 }

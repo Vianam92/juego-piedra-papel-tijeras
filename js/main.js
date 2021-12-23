@@ -7,6 +7,7 @@ const inputBtnElement = document.querySelector(".js-input");
 const textGoElement = document.querySelector(".js-start");
 const textPlayerElement = document.querySelector(".js_cont_player");
 const textComputerElement = document.querySelector(".js_cont_computer");
+const divContainImg= document.querySelector('.js-div');
 const userValue = selectOptionElements.value;
 const resetElement = document.querySelector(".js-reset");
 
@@ -14,6 +15,7 @@ const resetElement = document.querySelector(".js-reset");
 let countUser = 0;
 let countComputer = 0;
 let count = 0;
+
 
 //function
 function getRandomNumber(max) {
@@ -25,10 +27,19 @@ function getValueComputer() {
   let moveComputer = "";
   if (randomNumber < 3) {
     moveComputer = "piedra";
+    document.querySelector('.js-tijera').classList.add('hidden');
+    document.querySelector('.js-papel').classList.add('hidden');
+    document.querySelector('.js-piedra').classList.remove('hidden');
   } else if (randomNumber >= 6) {
     moveComputer = "tijera";
+    document.querySelector('.js-tijera').classList.remove('hidden');
+    document.querySelector('.js-papel').classList.add('hidden');
+    document.querySelector('.js-piedra').classList.add('hidden');
   } else {
     moveComputer = "papel";
+    document.querySelector('.js-tijera').classList.add('hidden');
+    document.querySelector('.js-piedra').classList.add('hidden');
+    document.querySelector('.js-papel').classList.remove('hidden');
   }
   return moveComputer;
 }
@@ -37,6 +48,7 @@ function getValueUser() {
   const valueUser = selectOptionElements.value;
   return valueUser;
 }
+
 function getResultComparing() {
   let moveComputer = getValueComputer();
   let moveUser = getValueUser();
