@@ -10,9 +10,16 @@
 </head>
 
 <body>
+    <header>
+        <h1 class="h1">Juego Piedra, Papel y Tijera</h1>
+    </header>
     <main>
+        <div class="div-img ">
+            <img src="images/papel.png" Alt="papel" class="img js-papel hidden">
+            <img src="images/piedra.png" Alt="piedra" class="img js-piedra hidden">
+            <img src="images/tijeras.png" Alt="tijeras" class="img js-tijera hidden">
+        </div>
         <section class="container">
-            <h1 class="h1">Juego Piedra, Papel y Tijera</h1>
             <form action="#">
                 <select class="js-select select" name="select" id="select">
                     <option>Seleccione su jugada</option>
@@ -22,16 +29,15 @@
                 </select>
                 <input type="button" value="Jugar" class="button js-input">
                 <p class="js-start start">¡Vamos a jugar!</p>
-                <p class="js_cont_player text"></p>
-                <p class="js_cont_computer text"></p>
+                <ul>
+                    <li class="js_cont_player text"></li>
+                    <img src="./images/Robot_37500.png" class="robot" class="robot">
+                    <li class="js_cont_computer text">
+                    </li>
+                </ul>
                 <input class="button-reset hidden js-reset" type="reset" value="reiniciar juego">
             </form>
         </section>
-        <div class="div-img ">
-            <img src="images/papel.png" Alt="papel" class="img js-papel hidden">
-            <img src="images/piedra.png" Alt="piedra" class="img js-piedra hidden">
-            <img src="images/tijeras.png" Alt="tijeras" class="img js-tijera hidden">
-        </div>
     </main>
     <script src=" ./js/main.js"></script>
 </body>

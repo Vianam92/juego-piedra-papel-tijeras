@@ -2,40 +2,47 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style-type: none;
 }
 
-body {
-    background-color: rgba(80, 194, 240, 0.603);
+header {
+    position: fixed;
+    top: 0;
+    background-color: rgb(241, 24, 24);
+    color: blanchedalmond;
 }
 
 main {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    margin-top: 150px;
+}
+
+form {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(124, 238, 228);
     height: auto;
     margin: 10px;
     padding: 5px;
-    box-shadow: 0 0 0 3px rgba(255, 244, 242, 0.39);
 }
 
 .select {
     margin: 10px;
     padding: 5px;
-    background-color: rgb(238, 220, 216);
+    background-color: rgb(231, 67, 26);
     border-radius: 25px;
-    border: 2px solid rgb(83, 77, 77);
-    box-shadow: -3px -2px 0 rgba(48, 45, 45, 0.753);
+    border: 2px solid rgb(235, 208, 208);
+    box-shadow: 3px 2px 0 2pxrgba(226, 43, 43, 0.753);
     font-size: 1.2rem;
     font-weight: 600;
+    color: white;
 }
 
 .button {
@@ -80,27 +87,29 @@ main {
     margin: 20px;
 }
 
+.robot {
+    width: 50px;
+}
+
 .text {
     color: rgb(2, 5, 34);
     text-align: center;
     margin: 10px;
 }
 
-.hidden {
-    display: none;
-}
-
 .div-img {
     width: 100%;
-    margin-top: 10px;
     text-align: center;
 }
 
 .img {
     width: 100px;
     height: auto;
-    border-radius: 50%;
-    border: 3px solid white
+    border: 5px solid white;
+}
+
+.hidden {
+    display: none;
 }
 
 @media(min-width:768px) {

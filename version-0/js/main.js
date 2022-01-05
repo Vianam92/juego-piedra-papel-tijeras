@@ -1,7 +1,6 @@
 "use strict";
 
 //Elementos
-
 const selectOptionElements = document.querySelector(".js-select");
 const inputBtnElement = document.querySelector(".js-input");
 const textGoElement = document.querySelector(".js-start");
@@ -15,7 +14,6 @@ const resetElement = document.querySelector(".js-reset");
 let countUser = 0;
 let countComputer = 0;
 let count = 0;
-
 
 //function
 function getRandomNumber(max) {
@@ -97,6 +95,7 @@ function gameOver() {
     resetElement.classList.remove("hidden");
   }
 }
+
 function resetGame(eve) {
   eve.preventDefault();
   inputBtnElement.classList.remove("hidden");

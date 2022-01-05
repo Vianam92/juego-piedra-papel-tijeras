@@ -1,0 +1,24 @@
+.footer{
+    position: fixed;
+    background-color: rgba(231, 67, 26, 0.199);
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    &-contact{
+        display: flex;
+        &__icons{
+            display: flex;
+            margin:5px;
+        &--link{
+            color:rgb(230, 68, 27);
+            padding:5px;
+            margin-right: 10px;
+        }}
+    }
+}
+small{
+    color:rgb(231, 67, 26);
+    margin-left: 10px;
+}
