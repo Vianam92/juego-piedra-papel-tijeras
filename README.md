@@ -1,124 +1,61 @@
-![Adalab](https://beta.adalab.es/resources/images/adalab-logo-155x61-bg-white.png)
+# Juego-Piedra-Papel-o-Tijeras
+Juego Piedra Papel Tijeras
 
-# Adalab web starter kit
+## El ejercicio consiste en desarrollar el juego "Piedra, Papel y Tijera". 
+En el juego ambos jugadores tienen que hacer una piedra, papel o tijeras. Solo tiene dos resultados posibles: un empate o una victoria para un
+jugador y una derrota para el otro jugador. Diseñaremos el juego usando JavaScript donde un jugador
+jugará contra la computadora.
 
-Ahoy! Este es nuestro Starter Kit creado en **node y gulp**. ¿Y qué es un Starter kit? Pues es una **plantilla de proyecto con funcionalidades preinstaladas y preconfiguradas**.
+El programa genera un movimiento al azar entre papel, piedra y tijera (las indicaciones para generar el
+movimiento al azar están más adelante). Posteriormente la usuaria juega, el programa compara los
+movimientos y decide si la usuaria ha ganado, perdido o empatado contra el ordenador. También a su vez el
+programa va contabilizando el número de puntos del jugador y del ordenador. El juego se reinicia se
+realicen 10 movimientos.
 
-Este Kit incluye un motor de plantillas HTML, el preprocesador SASS y un servidor local y muchas cosas más. El Kit nos ayuda a trabajar más cómodamente, nos automatiza tareas.
+- En la parte superior, la jugadora selecciona la jugada del desplegable. Las opciones son Piedra,
+Papel y Tijera.
+Debajo, en el próximo apartado aparecen los siguientes textos:
+- Al arrancar la página: ¡Vamos a Jugar!.
+Cuando la jugadora introduzca un movimiento que coincida con al movimiento aleatorio se
+muestra el mensaje: Empate.
+- Cuando la jugadora introduzca un movimiento que gane al movimiento aleatorio se muestra el
+mensaje: ¡Has Ganado!.
+- Cuando la jugadora introduzca un movimiento que falle al movimiento aleatorio se muestra el
+mensaje: ¡Has perdido!.
+- En la parte inferior debe aparecer los puntos de cada jugador.
 
-En el Kit hay 3 tipos de ficheros y carpetas:
+### Pasos para realizar el juego
+Para realizar el juego tenemos que realizar las siguientes funcionalidades desde JavaScript:
+- Crear una maquetación mínima con el select, el espacio para el resultado y el espacio para los puntos
+de cada jugador.
+- Generar un número aleatorio con la ayuda de Math.random y Math.ceil . Puedes usar la siguiente
+función, copia estas 3 líneas de código en vuestro JS y no las modifiquéis:
 
-- Los ficheros que están sueltos en la raíz del repositorio, como gulpfile.js, package.json... Son la configuración del proyecto y no necesitamos modificarlos.
-- La carpeta `src/`: son los ficheros de nuestra página web, como HTML, CSS, JS...
-- Las carpetas `public/` y `docs/`, que son generadas automáticamente cuando arrancamos el proyecto. El Kit lee los ficheros que hay dentro de `src/`, los procesa y los genera dentro de `public/` y `docs/`.
+```` js
+function getRandomNumber(max) {
+return Math.ceil(Math.random() * max);
+}
+````
 
-## Guía de inicio rápido
+#### Generar un movimiento aleatorio y para eso puedes seguir las siguientes indicaciones:
+- si el número aleatorio generado en el paso anterior es menor que 3 el movimiento es piedra
+- si el número aleatorio generado es mayor o igual que 6 el movimiento es papel
+- y sino el movimiento generado es tijera.
 
-> **NOTA:** Necesitas tener instalado [Node JS](https://nodejs.org/) para trabajar con este Starter Kit:
+. Comparar el movimiento que la jugadora ha seleccionado con el movimiento que ha generado la
+computadora, y pintar las pistas correspondientes en la pantalla.
+. Actualizar el contador de puntos en cada jugada.
+. El juego se reinicia cuando se hagan 10 movimientos.
 
-### Pasos a seguir cada vez que queremos arrancar un proyecto desde cero:
-
-1. **Crea tu propio repositorio.**
-1. Descarga este **Starter kit desde GitHub**.
-   - No recomendamos que clones este repo ya que no podrás añadir commits.
-1. **Copia todos los ficheros** de este Starter kit en la carpeta raíz de tu repositorio.
-   - Recuerda que debes copiar **también los ficheros ocultos**.
-   - Si has decidido clonar este repo, no debes copiar la carpeta `.git`. Si lo haces estarás machacando tu propio repositorio.
-1. **Abre una terminal** en la carpeta raíz de tu repositorio.
-1. **Instala las dependencias** locales ejecutando en la terminal el comando:
-
-```bash
-npm install
-```
-
-### Pasos para arrancar el proyecto:
-
-Una vez hemos instalado las dependencias, vamos a arrancar el proyecto. **El proyecto hay que arrancarlo cada vez que te pongas a programar.** Para ello ejecuta el comando:
-
-```bash
-npm start
-```
-
-Este comando:
-
-- **Abre una ventana de Chrome y muestra tu página web**, al igual que hace el plugin de VS Code Live Server (Go live).
-- También **observa** todos los ficheros que hay dentro de la carpeta `src/`, para que cada vez que modifiques un fichero **refresca tu página en Chrome**.
-- También **procesa los ficheros** HTML, SASS / CSS y JS y los **genera y guarda en la carpeta `public/`**. Por ejemplo:
-   - Convierte los ficheros SASS en CSS.
-   - Combina los diferentes ficheros de HTML y los agrupa en uno o varios ficheros HTML.
-
-Después de ejecutar `npm start` ya puedes empezar a editar todos los ficheros que están dentro de la carpeta `src/` y programar cómodamente.
-
-### Pasos para publicar el proyecto en GitHub Pages:
-
-Para generar tu página para producción ejecuta el comando:
-
-```bash
-npm run docs
-```
-
-Y a continuación:
-
-1. Sube a tu repo la carpeta `docs/` que se te acaba de generar.
-1. Entra en la pestaña `settings` de tu repo.
-1. Y en el apartado de GitHub Pages activa la opción **master branch /docs folder**.
-1. Y ya estaría!!!
-
-Además, los comandos:
-
-```bash
-npm run push-docs
-```
-o
-
-```bash
-npm run deploy
-```
-
-son un atajo que nos genera la versión de producción y hace push de la carpeta `docs/` del tirón. Te recomendamos ver el fichero `package.json` para aprender cómo funciona.
-
-## Flujo de archivos con Gulp
-
-Estas tareas de Gulp producen el siguiente flujo de archivos:
-
-![Gulp flow](./gulp-flow.png)
-
-## `gulpfile.js` y `config.json`
-
-Nuestro **gulpfile.js** usa el fichero `config.json` de configuración con las rutas de los archivos a generar / observar.
-
-De esta manera separarmos las acciones que están en `gulpfile.js` de la configuración de las acciones que están en `config.json`.
-
-## Estructura de carpetas
-
-La estructura de carpetas tiene esta pinta:
-
-```
-src
- ├─ api // los ficheros de esta carpeta se copian en public/api/
- |  └─ data.json
- ├─ images
- |  └─ logo.jpg
- ├─ js // los ficheros de esta carpeta se concatenan en el fichero main.js y este se guarda en public/main.js
- |  ├─ main.js
- |  └─ events.js
- ├─ scss
- |  ├─ components
- |  ├─ core
- |  ├─ layout
- |  └─ pages
- └─ html
-    └─ partials
-```
-
-> **NOTA:** Los partials de HTML y SASS del proyecto son orientativos. Te recomendamos usar los que quieras, y borrar los que no uses.
-
-## Vídeotutoriales del Starter kit
-
-- [Qué es, trabajar con la versión de desarrollo y rutas relativas](https://www.youtube.com/watch?v=XwvhXvBijos)
-- [Migración de un proyecto, trabajar con la versión de producción y GitHub Pages](https://www.youtube.com/watch?v=qqGClcgt9Uc)
-- [Motor de plantillas](https://www.youtube.com/watch?v=4GwXOJ045Zg)
-
-## Falta algo?
-
-Echas de menos que el kit haga algo en concreto? Pidelo sin problema a través de las issues o si te animas a mejorarlo mándanos un PR :)
+Según vayas trabajando en el ejercicio, haz nuevas versiones del mismo y sube los cambios a GitHub. De
+esta forma podremos ver cómo vas avanzando. También publica el resultado usando GitHub Pages
+(recuerda configurarlo en las preferencias del proyecto) y pon el enlace a GitHub Pages en la descripción
+del repositorio.
+### Bonus
+Si te queda tiempo y quieres completar las funcionalidades del juego, puedes hacer lo siguiente:
+- El juego finaliza cuando llega a 10 movimientos, agrega el código necesario para que se muestre un
+botón.
+- Reiniciar Juego que vuelva a iniciar el juego cuando se cumpla esta condición y desaparezca
+el botón de Jugar.
+- Cuando le demos click a al botón Reiniciar Juego desaparece este botón, poner todos los
+contadores a cero y vuelve a aparecer el botón Jugar
